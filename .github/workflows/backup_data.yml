@@ -1,0 +1,33 @@
+name: 🛡️ Auto Backup Database
+
+on:
+  # Otomatis berjalan setiap hari jam 12 malam UTC (Jam 07:00 pagi WIB)
+  schedule:
+    - cron: '0 0 * * *'
+  
+  # Membuat tombol "Run workflow" aktif di tab Actions
+  workflow_dispatch:
+
+jobs:
+  backup_to_telegram:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: 📦 Kompres Seluruh Folder BOT (ZIP)
+        run: |
+          # Membungkus KESELURUHAN folder BOT beserta isinya (List, History, Temp, dll)
+          zip -r backup_skydev_database.zip BOT/
+          
+      - name: 🚀 Kirim ke Telegram Pribadi
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          # Mengirim file zip full ke API Telegram
+          curl -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendDocument" \
+          -F chat_id="$TELEGRAM_CHAT_ID" \
+          -F document="@backup_skydev_database.zip" \
+          -F caption="✅ [AUTO BACKUP FULL] Seluruh database & direktori BOT SKYDEV berhasil diamankan."
