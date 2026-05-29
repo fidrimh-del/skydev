@@ -21,7 +21,7 @@ class PKXDSkydevRegisterEngine:
         self.lobby_url = "https://pkxd-lobby.aftvrsys.com"
         self.app_key = "57a3d999-654c-4484-a20c-0f4b5512af49"
         self.app_secret = "jWS5aLZacNVFx6PAxpXq2g4o" 
-        self.version = "1.87.2"
+        self.version = "1.87.3"
         self.game_protocol = "1.87.0" 
         self.impersonate_targets = ["chrome110", "chrome116", "safari15_5"]
         
