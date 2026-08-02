@@ -29,7 +29,6 @@ jobs:
       - name: Install Dependencies
         # WAJIB menambahkan aiofiles untuk mendukung engine V2
         run: pip install curl_cffi requests aiofiles typing_extensions
-        run: pip install curl_cffi requests aiofiles
         
       - name: Eksekusi Follow Pintar
         run: python follow_cloud.py ${{ github.event.inputs.target_uuid }} ${{ github.event.inputs.jumlah_order }}
