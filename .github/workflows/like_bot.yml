@@ -32,7 +32,7 @@ jobs:
           
       - name: Install Senjata (Dependencies)
         # Tambahkan library supabase di sini
-        run: pip install curl_cffi requests aiofiles supabase
+        run: pip install curl_cffi==0.16.0 requests==2.34.2 aiofiles==25.1.0 supabase==2.31.0 typing_extensions==4.16.0
         
       - name: Tembak Server PK XD
         # Suntikkan URL dan Key dari Github Secrets ke dalam mesin Python
