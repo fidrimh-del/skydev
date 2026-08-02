@@ -20,7 +20,7 @@ jobs:
           
       - name: Install Dependencies
         # PERUBAHAN: Ditambahkan aiofiles demi mendukung sistem Async V2
-        run: pip install curl_cffi requests aiofiles
+        run: pip install curl_cffi==0.16.0 requests==2.34.2 aiofiles==25.1.0 typing_extensions==4.16.0
         
       - name: Eksekusi Relogin Massal
         run: python relogin_cloud.py
